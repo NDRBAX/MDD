@@ -1,25 +1,63 @@
-# P6-Full-Stack-reseau-dev
+<div align="center" id="top"> 
+  <img src="./assets/mdd_logo.png" alt="Monde de Dev" height="150px" />
+</div>
 
-## Front
+<h1 align="center">Monde de Dev</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/NDRBAX/MDD?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/NDRBAX/MDD?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/NDRBAX/MDD?color=56BEB8">
+</p>
 
-Don't forget to install your node_modules before starting (`npm install`).
+<p align="center">
+  <a href="#repository-structure">Repository structure</a> &#xa0; | &#xa0;
+  <a href="#features">Features</a> &#xa0; | &#xa0;
+  <a href="#technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#requirements">Requirements</a> &#xa0;
+</p>
 
-### Development server
+<br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+MDD is a fullstack web application designed to facilitate content sharing and user interactions around thematic articles. Users can register, subscribe to themes, publish articles, and engage through comments. The application ensures a seamless experience across desktop and mobile devices.
 
-### Build
+This project follows a **Minimum Viable Product (MVP)** approach, focusing solely on essential functionalities without a dedicated back-office.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-### Where to start
+## Repository structure
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+```
+/Savasana app
+│── /front    # Angular application
+│── /back     # Spring Boot API
+│── /resources   # Additional project resources (postman collection, sql script, coverage)
+│── README.md    # Main project documentation (you are here)
+```
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+Each section has its own **README file** with specific installation and setup instructions:  
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get rid of it.
+- 📄 **Frontend** (`/front/README.md`) – Angular application setup and usage  
+- 📄 **Backend** (`/back/README.md`) – Spring Boot API setup and usage  
 
-Good luck!
+---
+
+## ✨ Features
+
+### **User Management**
+- User registration with email, password, and username.
+- Login using either email or username with password authentication.
+- Persistent user sessions across browser sessions.
+- Profile management (update email, username, and password).
+- Logout functionality.
+
+### **Subscription Management**
+- View the list of all available themes.
+- Subscribe to a theme.
+- Unsubscribe from a theme.
+
+### **Article Management**
+- View a personalized news feed sorted chronologically.
+- Sort articles from newest to oldest or vice versa.
+- Create an article (assign a theme, set a title, and write content).
+- View an article with full details (theme, title, author, date, content, and comments).
+- Add comments to articles.
