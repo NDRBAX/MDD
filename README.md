@@ -1,5 +1,5 @@
-<div align="center" id="top"> 
-  <img src="./assets/mdd_logo.png" alt="Monde de Dev" height="150px" />
+<div align="center"> 
+  <img src="./assets/mdd_logo.png" alt="Monde de Dev" height="100px" />
 </div>
 
 <h1 align="center">Monde de Dev</h1>
