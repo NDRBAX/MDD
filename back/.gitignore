@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Node
+/node/
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Static resources
+src/main/resources/static/
+
+# Others
+.java-version
+.env
