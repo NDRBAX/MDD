@@ -1,57 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.openclassrooms</groupId>
-	<artifactId>mdd-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>mdd-api</name>
-	<description>Demo project for Spring Boot</description>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<!-- ┌────────────────────────────────────────┐ -->
-	<!-- │░█▀█░█▀▄░█▀█░█▀█░█▀▀░█▀▄░▀█▀░▀█▀░█▀▀░█▀▀│ -->
-	<!-- │░█▀▀░█▀▄░█░█░█▀▀░█▀▀░█▀▄░░█░░░█░░█▀▀░▀▀█│ -->
-	<!-- │░▀░░░▀░▀░▀▀▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀│ -->
-	<!-- └────────────────────────────────────────┘ -->
-	<properties>
-		<java.version>23</java.version>
-	</properties>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+    <groupId>com.openclassrooms</groupId>
+    <artifactId>mdd-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>mdd-api</name>
+    <description>Demo project for Spring Boot</description>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <!-- ┌────────────────────────────────────────┐ -->
+    <!-- │░█▀█░█▀▄░█▀█░█▀█░█▀▀░█▀▄░▀█▀░▀█▀░█▀▀░█▀▀│ -->
+    <!-- │░█▀▀░█▀▄░█░█░█▀▀░█▀▀░█▀▄░░█░░░█░░█▀▀░▀▀█│ -->
+    <!-- │░▀░░░▀░▀░▀▀▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀│ -->
+    <!-- └────────────────────────────────────────┘ -->
+    <properties>
+        <java.version>23</java.version>
+        <node.version>22.14.0</node.version>
+        <npm.version>11.2.0</npm.version>
+        <eirslett.version>1.15.1</eirslett.version>
+    </properties>
 
+    <!-- ┌────────────────────────────────────────────────┐ -->
+    <!-- │░█▀▄░█▀▀░█▀█░█▀▀░█▀█░█▀▄░█▀▀░█▀█░█▀▀░▀█▀░█▀▀░█▀▀│ -->
+    <!-- │░█░█░█▀▀░█▀▀░█▀▀░█░█░█░█░█▀▀░█░█░█░░░░█░░█▀▀░▀▀█│ -->
+    <!-- │░▀▀░░▀▀▀░▀░░░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀│ -->
+    <!-- └────────────────────────────────────────────────┘ -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ┌────────────────────┐ -->
+    <!-- │░█▀▄░█░█░▀█▀░█░░░█▀▄│ -->
+    <!-- │░█▀▄░█░█░░█░░█░░░█░█│ -->
+    <!-- │░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀░│ -->
+    <!-- └────────────────────┘ -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!--  -->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${eirslett.version}</version>
+                <configuration>
+                    <workingDirectory>../front</workingDirectory>
+                    <nodeVersion>v${node.version}</nodeVersion>
+                    <npmVersion>${npm.version}</npmVersion>
+                </configuration>
+                <executions>
+                    <!-- Installation de Node et NPM -->
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- Installation des dépendances -->
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+
+                    <!-- Test unitaires avec Jest -->
+                    <execution>
+                        <id>npm-test-jest</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <phase>test</phase>
+                        <configuration>
+                            <arguments>run test --coverage</arguments>
+                            <skip>${frontend.tests.skip}</skip>
+                        </configuration>
+                    </execution>
+
+                    <!-- Build de l'application -->
+                    <execution>
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build:mvn</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+       
+    </build>
 </project>
