@@ -1,0 +1,17 @@
+<mat-card class="topic-card">
+  <mat-card-header>
+    <mat-card-title>{{ topic.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p [truncateText]="3">{{ topic.description }}</p>
+  </mat-card-content>
+
+  <mat-card-actions class="topic-actions">
+    <app-button
+      [label]="topic.isLoading ? 'Chargement...' : topic.isSubscribed ? 'Déjà abonné' : 'S\'abonner'"
+      [color]="topic.isSubscribed ? 'secondary' : 'primary'"
+      [type]="'flat'"
+      [disabled$]="isLoading$"
+      (onClick)="onAction()" />
+  </mat-card-actions>
+</mat-card>
