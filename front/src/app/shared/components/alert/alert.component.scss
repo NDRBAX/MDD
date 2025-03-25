@@ -1,0 +1,60 @@
+$status-types: "error", "warning", "success", "info", "empty";
+
+.message-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px color-mix(in hsl, var(--black-color), transparent 80%);
+
+  @each $type in $status-types {
+    &.#{$type}-color {
+      background-color: var(--white-color);
+      border-left: 4px solid color-mix(in hsl, var(--#{$type}-color), transparent 75%);
+      color: var(--#{$type}-color);
+
+      .message-icon {
+        color: var(--#{$type});
+      }
+    }
+  }
+
+  .message-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+
+    .mat-icon {
+      font-size: 24px;
+      width: 50px;
+      height: 24px;
+      line-height: 24px;
+    }
+  }
+
+  .message-text {
+    font-size: 14px;
+  }
+
+  .close-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-left: 8px;
+
+    .mat-icon {
+      font-size: 22px;
+      width: 24px !important;
+      height: 24px !important;
+      line-height: 24px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+

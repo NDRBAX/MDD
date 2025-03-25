@@ -1,0 +1,10 @@
+<div class="message-container" [ngClass]="type | statusColor" [@messageState]="state"
+  (@messageState.done)="onAnimationDone($event)">
+  <div class="message-content">
+    <mat-icon class="message-icon">{{ type | iconType }}</mat-icon>
+    <span class="message-text">{{ message }}</span>
+  </div>
+  <button *ngIf="dismissible" mat-icon-button class="close-button" (click)="dismiss()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
