@@ -1,0 +1,9 @@
+@import 'src/styles/responsive.scss';
+
+.topics-content {
+  padding: 20px 0;
+
+  @include responsive-desktop {
+    padding: 20px;
+  }
+}
