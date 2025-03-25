@@ -15,15 +15,17 @@ public class WebSecurityConfig {
         http.cors(withDefaults()).csrf(csrf -> csrf.disable())
             .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(requests -> requests
-                // Permettre l'accès aux URLs d'authentification
+                // Allow all requests to the authentication API
                 .requestMatchers("/api/auth/**").permitAll()
-                // Permettre l'accès aux ressources statiques
+                // TEST
+                .requestMatchers("/api/topics/**").permitAll()
+                // Static resources
                 .requestMatchers("/", "/index.html", "/favicon.ico", "/*.css", "/*.js", "/assets/**").permitAll()
-                // Protection des endpoints API
+                // Protect the API
                 .requestMatchers("/api/**").authenticated()
-                // Exiger une authentification pour tout le reste
-                .anyRequest().authenticated());
+                // Allow all other requests
+                .anyRequest().permitAll()
+            );
         return http.build();
     }
-
 }

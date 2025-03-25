@@ -1,0 +1,21 @@
+<div class="topic-list-container">
+  <!-- LOADER -->
+  <app-spinner [isLoading$]="isLoading$" message="Chargement des thèmes en cours..." />
+
+  <!-- ERRORS-->
+  <div *ngIf="errors$ | async as errorMessage" class="error-message">
+    <app-status-message type="error" [message]="errorMessage" />
+  </div>
+
+  <!-- TOPICS -->
+  <div *ngIf="!(errors$ | async) && !(isLoading$ | async) && topics as topics" class="topics-grid">
+    <ng-container *ngIf="topics.length; else noTopicsTemplate">
+      <app-topic-item *ngFor="let topic of topics" [topic]="topic" (action)="onAction($event)" />
+    </ng-container>
+
+    <!-- IF TOPICS EMPTY -->
+    <ng-template #noTopicsTemplate>
+      <app-status-message type="empty" message="Aucun thème disponible pour le moment." />
+    </ng-template>
+  </div>
+</div>

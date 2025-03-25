@@ -1,4 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+@import './responsive.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+
+}
+
+
+
+
+
+:root {
+  --primary-color: #{$primary};
+  --secondary-color: #{$secondary};
+  --tertiary-color: #{$tertiary};
+  --white-color: #{$white};
+  --black-color: #{$black};
+  --info-color: #{$info};
+  --warning-color: #{$warning};
+  --error-color: #{$error};
+  --success-color: #{$success};
+}
+

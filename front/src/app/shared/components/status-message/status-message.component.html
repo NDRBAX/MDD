@@ -1,0 +1,6 @@
+<mat-card [appearance]="appearance" class="status-message-card" [ngClass]="type | statusColor">
+  <mat-card-content class="status-content">
+    <mat-icon [ngClass]="type | statusColor">{{ type | iconType }}</mat-icon>
+    <span>{{ message }}</span>
+  </mat-card-content>
+</mat-card>

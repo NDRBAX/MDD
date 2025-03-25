@@ -1,0 +1,37 @@
+<ng-container [ngSwitch]="type">
+  <!-- BASIC -->
+  <button *ngSwitchCase="'basic'"
+          mat-button
+          [ngClass]="getColorClass()"
+          [disabled]="disabled$ | async"
+          (click)="onClick.emit($event)">
+    {{ label }}
+  </button>
+
+  <!-- RAISED -->
+  <button *ngSwitchCase="'raised'"
+          mat-raised-button
+          [ngClass]="getColorClass()"
+          [disabled]="disabled$ | async"
+          (click)="onClick.emit($event)">
+    {{ label }}
+  </button>
+
+  <!-- STROKED -->
+  <button *ngSwitchCase="'stroked'"
+          mat-stroked-button
+          [ngClass]="getColorClass()"
+          [disabled]="disabled$ | async"
+          (click)="onClick.emit($event)">
+    {{ label }}
+  </button>
+
+  <!-- FLAT -->
+  <button *ngSwitchDefault
+          mat-flat-button
+          [ngClass]="getColorClass()"
+          [disabled]="disabled$ | async"
+          (click)="onClick.emit($event)">
+    {{ label }}
+  </button>
+</ng-container>
