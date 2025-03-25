@@ -54,3 +54,16 @@ $breakpoints: (
     @content;
   }
 }
+
+
+@mixin responsive-desktop {
+  @include tablet {
+    @content;
+  }
+  @include desktop {
+    @content;
+  }
+  @include large-desktop {
+    @content;
+  }
+}
