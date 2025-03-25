@@ -1,0 +1,52 @@
+<div class="header-container">
+  <mat-toolbar color="secondary">
+    <div class="toolbar-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="/assets/logo_p6.png" alt="logo" height="60" />
+      </div>
+
+      <!-- DESKTOP MENU -->
+      <div class="desktop-menu">
+        <a mat-button routerLink="/social-media">Se déconnecter</a>
+        <a mat-button routerLink="/topics">Thèmes</a>
+        <a mat-button routerLink="/articles">Articles</a>
+        <a mat-icon-button color="primary" class="circle center" routerLink="/profile">
+          <mat-icon>person</mat-icon>
+        </a>
+      </div>
+
+      <!-- DRAWER ICON -->
+      <button mat-icon-button class="mobile-menu-button" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <!-- Drawer pour mobile -->
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer mode="over" position="end" class="mobile-drawer">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/logout" (click)="drawer.close()">
+          <mat-icon matListItemIcon>logout</mat-icon>
+          <span matListItemTitle>Se déconnecter</span>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/topics" (click)="drawer.close()">
+          <mat-icon matListItemIcon>category</mat-icon>
+          <span matListItemTitle>Thèmes</span>
+        </a>
+        <a mat-list-item routerLink="/articles" (click)="drawer.close()">
+          <mat-icon matListItemIcon>article</mat-icon>
+          <span matListItemTitle>Articles</span>
+        </a>
+        <a mat-list-item routerLink="/profile" (click)="drawer.close()" class="circle">
+          <div class="center">
+            <mat-icon matListItemIcon>person</mat-icon>
+          </div>
+        </a>
+
+      </mat-nav-list>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>
