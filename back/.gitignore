@@ -44,3 +44,5 @@ src/main/resources/static/
 # Others
 .java-version
 .env
+app-private.key
+app-public.key
