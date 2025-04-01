@@ -62,7 +62,7 @@ public class WebSecurityConfig {
         configuration.addAllowedOrigin("http://localhost:4020");
         
         // HTTP methods allowed
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         
         // Allowed headers
         configuration.setAllowedHeaders(Arrays.asList(
