@@ -1,9 +1,9 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.response;
 
 import lombok.Data;
 
 @Data
-public class TopicDto {
+public class TopicResponseDto {
     private Long id;
     private String name;
     private String description;
