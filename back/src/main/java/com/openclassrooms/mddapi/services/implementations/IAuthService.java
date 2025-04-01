@@ -107,12 +107,13 @@ public class IAuthService implements AuthService {
     }
 
     @Override
+    @Transactional
     public UserResponseDto getCurrentAuthenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User authenticatedUser = userRepository.findByUsername(username)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur authentifié non trouvé"));
-
+        String userIdentifier = authentication.getName();
+        User authenticatedUser = userRepository.findByEmail(userIdentifier)
+            .orElseThrow(() -> new ResourceNotFoundException("Utilisateur authentifié non trouvé"));
+        
         return userMapper.toDto(authenticatedUser);
     }
 
