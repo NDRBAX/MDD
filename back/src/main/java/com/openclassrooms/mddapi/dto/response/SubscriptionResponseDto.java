@@ -13,6 +13,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SubscriptionResponseDto {
     private Long id;
-    private TopicResponseDto topic;
-    private LocalDateTime creationDate;
+    private String topic;
 }
