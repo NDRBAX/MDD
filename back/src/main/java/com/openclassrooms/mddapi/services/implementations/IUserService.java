@@ -3,7 +3,7 @@ package com.openclassrooms.mddapi.services.implementations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.openclassrooms.mddapi.dto.request.UserUpdateDto;
+import com.openclassrooms.mddapi.dto.request.UserUpdateRequestDto;
 import com.openclassrooms.mddapi.dto.response.AuthResponseDto;
 import com.openclassrooms.mddapi.dto.response.UserResponseDto;
 import com.openclassrooms.mddapi.exceptions.ResourceNotFoundException;
@@ -28,14 +28,14 @@ public class IUserService implements UserService {
 
     @Override
     public UserResponseDto findByEmail(String email) {
-        return userRepository.findUserWithSubscriptionsByEmail(email)
+        return userRepository.findByEmail(email)
                 .map(userMapper::toDto)
                 .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé avec l'email: " + email));
     }
 
     @Override
     @Transactional
-    public UserResponseDto update(String email, UserUpdateDto updateDto) {
+    public AuthResponseDto update(String email, UserUpdateRequestDto updateDto) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé avec l'email: " + email));
 
@@ -66,15 +66,12 @@ public class IUserService implements UserService {
 
         user = userRepository.save(user);
 
-        User userWithSubscriptions = userRepository.findUserWithSubscriptionsByEmail(user.getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé"));
-
-        UserResponseDto responseDto = userMapper.toDto(userWithSubscriptions);
+        AuthResponseDto responseDto = userMapper.toUserUpdateDto(user);
 
         if (emailChanged) {
-            AuthResponseDto authResponse = authService.authenticateUser(user.getEmail(), userWithSubscriptions);
-            responseDto.setNewAccessToken(authResponse.getAccessToken());
-            responseDto.setNewRefreshToken(authResponse.getRefreshToken());
+            AuthResponseDto authResponse = authService.authenticateUser(user.getEmail(), user);
+            responseDto.getAuthorization().setAccessToken(authResponse.getAuthorization().getAccessToken());
+            responseDto.getAuthorization().setRefreshToken(authResponse.getAuthorization().getRefreshToken());
         }
 
         return responseDto;

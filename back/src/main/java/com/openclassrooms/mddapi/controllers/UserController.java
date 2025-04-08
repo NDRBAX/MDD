@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.openclassrooms.mddapi.dto.request.UserUpdateDto;
+import com.openclassrooms.mddapi.dto.request.UserUpdateRequestDto;
+import com.openclassrooms.mddapi.dto.response.AuthResponseDto;
 import com.openclassrooms.mddapi.dto.response.UserResponseDto;
 import com.openclassrooms.mddapi.services.UserService;
 
@@ -29,9 +30,9 @@ public class UserController {
     }
 
     @PutMapping("/me")
-    public ResponseEntity<UserResponseDto> updateCurrentUser(
+    public ResponseEntity<AuthResponseDto> updateCurrentUser(
             @AuthenticationPrincipal Jwt jwt,
-            @Valid @RequestBody UserUpdateDto updateDto) {
+            @Valid @RequestBody UserUpdateRequestDto updateDto) {
         return ResponseEntity.ok(userService.update(jwt.getSubject(), updateDto));
     }
 }
