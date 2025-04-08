@@ -11,9 +11,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.openclassrooms.mddapi.dto.request.UserLoginDto;
-import com.openclassrooms.mddapi.dto.request.UserRegistrationDto;
+import com.openclassrooms.mddapi.dto.request.UserLoginRequestDto;
+import com.openclassrooms.mddapi.dto.request.UserRegistrationRequestDto;
 import com.openclassrooms.mddapi.dto.response.AuthResponseDto;
+import com.openclassrooms.mddapi.dto.response.TokenResponseDto;
 import com.openclassrooms.mddapi.dto.response.UserResponseDto;
 import com.openclassrooms.mddapi.exceptions.ResourceNotFoundException;
 import com.openclassrooms.mddapi.exceptions.UserAlreadyExistsException;
@@ -40,7 +41,7 @@ public class IAuthService implements AuthService {
 
     @Override
     @Transactional
-    public AuthResponseDto register(UserRegistrationDto registrationDto) {
+    public AuthResponseDto register(UserRegistrationRequestDto registrationDto) {
         if (userRepository.existsByEmail(registrationDto.getEmail())) {
             throw new UserAlreadyExistsException("Email déjà utilisé");
         }
@@ -54,15 +55,15 @@ public class IAuthService implements AuthService {
         user = userRepository.save(user);
 
         authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                    registrationDto.getEmail(),
-                    registrationDto.getPassword()));
+                new UsernamePasswordAuthenticationToken(
+                        registrationDto.getEmail(),
+                        registrationDto.getPassword()));
 
         return authenticateUser(user.getEmail(), user);
     }
 
     @Override
-    public AuthResponseDto login(UserLoginDto loginDto) {
+    public AuthResponseDto login(UserLoginRequestDto loginDto) {
         // Check if identifier is email or username
         Optional<User> user;
         if (loginDto.getIdentifier().contains("@")) {
@@ -77,17 +78,12 @@ public class IAuthService implements AuthService {
 
         // Authentication
         authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                    user.get().getEmail(),
-                    loginDto.getPassword()));
+                new UsernamePasswordAuthenticationToken(
+                        user.get().getEmail(),
+                        loginDto.getPassword()));
 
-        // Fetch user with subscriptions
-        User userWithSubscriptions = userRepository.findUserWithSubscriptionsByEmail(user.get().getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé"));
-
-        return authenticateUser(userWithSubscriptions.getEmail(), userWithSubscriptions);
+        return authenticateUser(user.get().getEmail(), user.get());
     }
-
 
     @Override
     @Transactional
@@ -112,11 +108,10 @@ public class IAuthService implements AuthService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userIdentifier = authentication.getName();
         User authenticatedUser = userRepository.findByEmail(userIdentifier)
-            .orElseThrow(() -> new ResourceNotFoundException("Utilisateur authentifié non trouvé"));
-        
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur authentifié non trouvé"));
+
         return userMapper.toDto(authenticatedUser);
     }
-
 
     @Override
     public AuthResponseDto authenticateUser(String email, User loadedUser) {
@@ -132,10 +127,11 @@ public class IAuthService implements AuthService {
         String refreshToken = refreshTokenService.createRefreshToken(email).getToken();
 
         return AuthResponseDto.builder()
+            .authorization(TokenResponseDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .tokenType("Bearer")
-                .user(userMapper.toDto(loadedUser))
-                .build();
+                .build())
+            .user(userMapper.toDto(loadedUser))
+            .build();
     }
 }

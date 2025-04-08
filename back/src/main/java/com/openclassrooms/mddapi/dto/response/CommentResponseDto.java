@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class SubscriptionResponseDto {
+@NoArgsConstructor
+public class CommentResponseDto {
     private Long id;
-    private String topic;
+    private String content;
+    private LocalDateTime creationDate;
+    private String author;
 }
