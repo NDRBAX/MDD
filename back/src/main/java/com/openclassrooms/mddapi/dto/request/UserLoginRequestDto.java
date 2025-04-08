@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginDto {
+public class UserLoginRequestDto {
     
     @NotBlank(message = "L'identifiant est obligatoire")
     private String identifier;
