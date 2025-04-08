@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.openclassrooms.mddapi.dto.response.TokenRefreshResponseDto;
+import com.openclassrooms.mddapi.dto.response.TokenResponseDto;
 import com.openclassrooms.mddapi.exceptions.TokenRefreshException;
 import com.openclassrooms.mddapi.models.RefreshToken;
 import com.openclassrooms.mddapi.models.User;
@@ -66,14 +66,14 @@ public class RefreshTokenService {
     }
 
     @Transactional
-    public TokenRefreshResponseDto refreshToken(String requestRefreshToken) {
+    public TokenResponseDto refreshToken(String requestRefreshToken) {
         return refreshTokenRepository.findByToken(requestRefreshToken)
                 .map(this::verifyExpiration)
                 .map(RefreshToken::getUser)
                 .map(user -> {
                     String accessToken = jwtTokenProvider.generateAccessTokenFromEmail(user.getEmail());
 
-                    return TokenRefreshResponseDto.builder()
+                    return TokenResponseDto.builder()
                             .accessToken(accessToken)
                             .refreshToken(requestRefreshToken)
                             .build();
