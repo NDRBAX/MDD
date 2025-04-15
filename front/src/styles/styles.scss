@@ -9,10 +9,6 @@ html, body {
 
 }
 
-
-
-
-
 :root {
   --primary-color: #{$primary};
   --secondary-color: #{$secondary};
@@ -23,5 +19,13 @@ html, body {
   --warning-color: #{$warning};
   --error-color: #{$error};
   --success-color: #{$success};
+}
+
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
