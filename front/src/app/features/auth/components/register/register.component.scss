@@ -1,0 +1,41 @@
+@import "src/styles/responsive.scss";
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+
+  .back-button {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-field {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+  }
+
+  @include responsive-desktop {
+     ::ng-deep {
+      .responsive-logo {
+        display: none !important;
+      }
+    }
+  }
+}
