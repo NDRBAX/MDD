@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.openclassrooms.mddapi.dto.request.UserUpdateRequestDto;
 import com.openclassrooms.mddapi.dto.response.AuthResponseDto;
+import com.openclassrooms.mddapi.dto.response.TokenResponseDto;
 import com.openclassrooms.mddapi.dto.response.UserResponseDto;
 import com.openclassrooms.mddapi.exceptions.ResourceNotFoundException;
 import com.openclassrooms.mddapi.exceptions.UserAlreadyExistsException;
@@ -64,16 +65,12 @@ public class IUserService implements UserService {
             user.setPassword(passwordEncoder.encode(updateDto.getPassword()));
         }
 
-        user = userRepository.save(user);
-
-        AuthResponseDto responseDto = userMapper.toUserUpdateDto(user);
-
         if (emailChanged) {
-            AuthResponseDto authResponse = authService.authenticateUser(user.getEmail(), user);
-            responseDto.getAuthorization().setAccessToken(authResponse.getAuthorization().getAccessToken());
-            responseDto.getAuthorization().setRefreshToken(authResponse.getAuthorization().getRefreshToken());
+            return authService.authenticateUser(user.getEmail(), user);
+        } else {
+            AuthResponseDto responseDto = userMapper.toUserUpdateDto(user);
+            responseDto.setAuthorization(new TokenResponseDto());
+            return responseDto;
         }
-
-        return responseDto;
     }
 }
