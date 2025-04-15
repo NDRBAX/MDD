@@ -1,4 +1,4 @@
-<div class="header-container">
+<div class="header-container" [ngClass]="{'auth-route': isAuthRoute()}">
   <mat-toolbar color="secondary">
     <div class="toolbar-content">
       <!-- Logo -->
@@ -7,8 +7,8 @@
       </div>
 
       <!-- DESKTOP MENU -->
-      <div class="desktop-menu">
-        <a mat-button routerLink="/social-media">Se déconnecter</a>
+      <div class="desktop-menu" *ngIf="isAuthenticated$ | async">
+        <button mat-button (click)="onLogout()" class="logout-button">Se déconnecter</button>
         <a mat-button routerLink="/topics">Thèmes</a>
         <a mat-button routerLink="/articles">Articles</a>
         <a mat-icon-button color="primary" class="circle center" routerLink="/profile">
@@ -17,19 +17,19 @@
       </div>
 
       <!-- DRAWER ICON -->
-      <button mat-icon-button class="mobile-menu-button" (click)="drawer.toggle()">
+      <button mat-icon-button *ngIf="isAuthenticated$ | async" class="mobile-menu-button" (click)="toggleDrawer()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
   </mat-toolbar>
 
   <!-- Drawer pour mobile -->
-  <mat-drawer-container class="drawer-container">
-    <mat-drawer #drawer mode="over" position="end" class="mobile-drawer">
+  <mat-drawer-container class=" drawer-container">
+    <mat-drawer #drawer [mode]="'over'" position="end" class="mobile-drawer" (closed)="enableScrolling()">
       <mat-nav-list>
-        <a mat-list-item routerLink="/logout" (click)="drawer.close()">
+        <a mat-list-item (click)="onLogout()">
           <mat-icon matListItemIcon>logout</mat-icon>
-          <span matListItemTitle>Se déconnecter</span>
+          <span matListItemTitle class="logout-button">Se déconnecter</span>
         </a>
         <mat-divider></mat-divider>
         <a mat-list-item routerLink="/topics" (click)="drawer.close()">
@@ -45,7 +45,6 @@
             <mat-icon matListItemIcon>person</mat-icon>
           </div>
         </a>
-
       </mat-nav-list>
     </mat-drawer>
   </mat-drawer-container>
