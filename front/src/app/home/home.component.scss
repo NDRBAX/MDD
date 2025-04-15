@@ -1,13 +1,14 @@
-.center {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+@import "src/styles/responsive.scss";
 
-.login-buttons {
-  display:flex;
-
-  gap: 50px;
+.home-page {
+  .login-buttons {
+    display: flex;
+    gap: 50px;
+  }
+  @include responsive-mobile {
+    .login-buttons {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
 }
