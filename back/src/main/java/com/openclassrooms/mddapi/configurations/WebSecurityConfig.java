@@ -20,7 +20,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.openclassrooms.mddapi.security.JwtAuthenticationEntryPoint;
 import com.openclassrooms.mddapi.security.JwtAuthenticationFilter;
 
-
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -43,8 +42,7 @@ public class WebSecurityConfig {
                         // Allow all requests to the authentication API
                         .requestMatchers("/api/auth/**").permitAll()
                         // Static resources
-                        .requestMatchers("/", "/index.html", "/favicon.ico", "/*.css", "/*.js", "/assets/**")
-                        .permitAll()
+                        .requestMatchers("/", "/index.html", "/favicon.ico", "/*.css", "/*.js", "/assets/**").permitAll()
                         // Protect all other API endpoints
                         .requestMatchers("/api/**").authenticated()
                         // Allow all other requests
@@ -57,7 +55,7 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:4020");
+        configuration.addAllowedOrigin("http://localhost:4200");
 
         // HTTP methods allowed
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
