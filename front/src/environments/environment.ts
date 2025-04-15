@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   apiTopics: 'api/topics',
+  apiAuth: 'api/auth',
+  jwtAccessExpirationMilliseconds: 900000, // 15 minutes
+  jwtRefreshExpirationMilliseconds: 604800000, // 7 days
 };
 
 /*
