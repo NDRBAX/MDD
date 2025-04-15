@@ -1,0 +1,37 @@
+@import "src/styles/responsive.scss";
+
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  .responsive-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include responsive-mobile {
+      max-width: 350px !important;
+    }
+  }
+
+  // @include responsive-desktop {
+  //   display: none;
+  // }
+}
+
+
+
+

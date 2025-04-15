@@ -1,0 +1,6 @@
+<div class="logo-container">
+  <a *ngIf="clickable" [routerLink]="routerLink">
+    <img [src]="src" [alt]="alt" class="responsive-logo" [ngStyle]="{'max-width': maxWidth}">
+  </a>
+  <img *ngIf="!clickable" [src]="src" [alt]="alt" class="responsive-logo" [ngStyle]="{'max-width': maxWidth}">
+</div>
