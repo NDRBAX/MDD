@@ -13,6 +13,4 @@ export class TopicsService {
   getAllTopics(): Observable<Topic[]> {
     return this.http.get<Topic[]>(`${environment.apiTopics}`);
   }
-
-
 }
