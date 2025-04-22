@@ -1,0 +1,56 @@
+@import "src/styles/responsive.scss";
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+
+  .back-button {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-field {
+      width: 100%;
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  @include responsive-desktop {
+    ::ng-deep {
+      .responsive-logo {
+        display: none !important;
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    margin: 1.5rem 0;
+    border: 1px solid #1f1e1e;
+  }
+
+  .user-subscriptions-container {
+    .topics-grid {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 4px;
+      grid-template-columns: 1fr;
+    }
+
+    @include responsive-desktop {
+      .topics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
