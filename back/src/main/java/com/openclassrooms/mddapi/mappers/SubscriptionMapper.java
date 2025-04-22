@@ -11,6 +11,7 @@ public interface SubscriptionMapper extends EntityMapper<SubscriptionResponseDto
 
     @Override
     @Mapping(target = "topic", source = "topic.name")
+    @Mapping(target = "topicId", source = "topic.id")
     SubscriptionResponseDto toDto(Subscription subscription);
 
     @Override
