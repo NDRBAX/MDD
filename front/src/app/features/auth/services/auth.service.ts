@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
-  finalize,
   Observable,
   of,
   switchMap,
@@ -77,6 +76,7 @@ export class AuthService {
       this.clearSession();
       return of(void 0);
     }
+
     if (!accessToken && refreshToken) {
       return this.refreshToken().pipe(
         switchMap(() => this.performLogout()),
@@ -125,7 +125,7 @@ export class AuthService {
     return this.httpClient.post<void>(`${this.apiPath}/logout`, {}).pipe(
       tap(() => this.clearSession()),
       catchError((error) => {
-        // Toujours nettoyer la session localement même en cas d'erreur
+        // Allway clear session on error
         this.clearSession();
         return throwError(() => error);
       })
