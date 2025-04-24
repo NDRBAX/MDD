@@ -1,0 +1,17 @@
+<div class="container-content">
+  <div class="header-content">
+    <app-button [label]="'Créer un article'" [color]="'primary'" [type]="'flat'" [disabled$]="isDisabled$"
+      (onClick)="onAction()">
+    </app-button>
+
+    <button mat-button class="sort-button" (click)="toggleSortDirection()">
+      <div class="sort-text-icon">
+        <span class="sort-text">Trier par</span>
+        <mat-icon *ngIf="sortDirection === 'asc'">arrow_upward</mat-icon>
+        <mat-icon *ngIf="sortDirection === 'desc'">arrow_downward</mat-icon>
+      </div>
+    </button>
+  </div>
+
+  <app-post-list [posts]="sortedPosts"></app-post-list>
+</div>
