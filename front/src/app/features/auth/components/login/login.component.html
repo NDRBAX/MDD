@@ -1,0 +1,34 @@
+<div class="signin-container">
+  <button mat-icon-button (click)="onBack()" class="back-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <app-logo />
+
+  <h2>Se connecter</h2>
+
+
+  <form [formGroup]="signinForm">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>E-mail ou nom d'utilisateur</mat-label>
+      <input matInput formControlName="identifier" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="signinForm.controls['password'].hasError('required')">
+        Le mot de passe est requis
+      </mat-error>
+    </mat-form-field>
+
+    <app-button color="primary" label="Se connecter" [disabled$]="disableSubmitButton$" (onClick)="onSubmit()" />
+    <p style="margin-top: 1rem">
+      Vous n'avez pas de compte ? <a routerLink="/auth/register">Inscrivez-vous ici</a>
+    </p>
+  </form>
+</div>

@@ -9,6 +9,8 @@ import { TruncateTextDirective } from './directives/truncateText.directive';
 import { IconTypePipe } from './pipes/icon-type.pipe';
 import { StatusColorPipe } from './pipes/status-color.pipe';
 import { AlertService } from './services/alert.service';
+import { LogoComponent } from './components/logo/logo.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { AlertService } from './services/alert.service';
     SpinnerComponent,
     TruncateTextDirective,
     IconTypePipe,
-    StatusColorPipe
+    StatusColorPipe,
+    LogoComponent
   ],
-  imports: [CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
     MaterialModule,
     ButtonComponent,
@@ -29,7 +32,8 @@ import { AlertService } from './services/alert.service';
     SpinnerComponent,
     TruncateTextDirective,
     IconTypePipe,
-    StatusColorPipe
+    StatusColorPipe,
+    LogoComponent
   ],
 })
 export class SharedModule {}

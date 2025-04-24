@@ -2,6 +2,13 @@
 
 .header-container {
   position: relative;
+  &.auth-route {
+    @include responsive-mobile {
+      mat-toolbar {
+        display: none;
+      }
+    }
+  }
 
   .logo {
     display: flex;
@@ -18,7 +25,7 @@
       display: none;
       gap: 16px;
 
-      a:first-child {
+      .logout-button {
         color: var(--error-color);
         font-weight: 700;
         font-size: 14px;
@@ -68,9 +75,11 @@
   }
 
   .drawer-container {
-    height: calc(100vh - 64px);
-    width: 100%;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1000;
     visibility: hidden;
 
