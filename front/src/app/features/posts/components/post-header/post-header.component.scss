@@ -1,0 +1,64 @@
+@import "src/styles/responsive.scss";
+
+.post-header {
+
+  align-items: center;
+  gap: 1rem;
+
+  .title-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .post-title {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: var(--black-color);
+  }
+
+  .post-meta-list,
+  .post-meta-detail {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+
+    @include responsive-mobile {
+      flex-wrap: wrap;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      @include responsive-mobile {
+        padding: 0
+      }
+    }
+  }
+
+  .post-meta-list {
+
+  }
+
+  .post-meta-detail {
+    padding: 0 0 0 4rem;
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-weight: 400;
+
+    @include responsive-mobile {
+      padding: 0;
+    }
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--text-secondary);
+  }
+}

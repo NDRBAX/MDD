@@ -1,0 +1,41 @@
+mat-card {
+  border-radius: 8px;
+  background-color: var(--tertiary-color);
+  box-shadow: 0 2px 4px color-mix(in hsl, var(--black-color), transparent 90%);;
+  padding: 16px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px color-mix(in hsl, var(--black-color), transparent 80%);;
+  }
+
+
+  .post-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black-color);
+  }
+
+  mat-card-subtitle {
+    display: flex;
+    gap: 30px;
+
+    }
+
+
+  mat-card-content p {
+      font-size: 14px !important;
+      font-weight: 400;
+      color: var(--black-color);
+      margin-top: 10px;
+      padding: 0 !important;
+  }
+
+  .topic-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}

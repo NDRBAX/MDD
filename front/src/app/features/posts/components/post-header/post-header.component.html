@@ -1,0 +1,20 @@
+<div class="post-header">
+  <div class="title-header">
+    <app-go-back-button *ngIf="isDetailPage" navigateTo="/articles" />
+    <h1 [ngClass]="{'post-title': isDetailPage, 'item-title': !isDetailPage}">{{ title }}</h1>
+  </div>
+  <div [ngClass]="{'post-meta-detail': isDetailPage, 'post-meta-list': !isDetailPage}">
+    <span class="post-date">
+      <mat-icon [ngStyle]="{'color':'var(--black-color)'}">event</mat-icon>
+      {{ creationDate | date: 'dd/MM/yyyy HH:mm' }}
+    </span>
+    <span class="post-author">
+      <mat-icon [ngStyle]="{'color':'var(--black-color)'}">person</mat-icon>
+      {{ authorName }}
+    </span>
+    <span class="post-topic" *ngIf="topicName">
+      <mat-icon [ngStyle]="{'color':'var(--black-color)'}">category</mat-icon>
+      {{ topicName }}
+    </span>
+  </div>
+</div>
