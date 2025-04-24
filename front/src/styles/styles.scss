@@ -5,8 +5,6 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-
-
 }
 
 :root {
@@ -29,3 +27,23 @@ html, body {
   flex-direction: column;
 }
 
+.container-content {
+  padding: 20px;
+
+  @include responsive-desktop {
+    padding: 20px;
+  }
+}
+
+
+.title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+}
+
+.item-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--black-color) !important;
+}

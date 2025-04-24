@@ -49,8 +49,4 @@ export class LoginComponent {
   get disableSubmitButton$(): Observable<boolean> {
     return of(this.signinForm.invalid || this.isSubmitting);
   }
-
-  public onBack(): void {
-    this.router.navigate(['/']);
-  }
 }

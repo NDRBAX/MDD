@@ -7,9 +7,6 @@ import { MaterialModule } from '@shared/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 
-
-
-
 @NgModule({
   imports: [
     ReactiveFormsModule,

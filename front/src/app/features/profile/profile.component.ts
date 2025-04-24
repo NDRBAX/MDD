@@ -7,7 +7,6 @@ import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
 import { UserService } from './services/user.service';
 import { Topic } from '../topics/interfaces/topic.interface';
 import { SubscriptionService } from '@core/services/subscription.service';
-import { TopicsService } from '../topics/services/topics.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -136,8 +135,4 @@ export class ProfileComponent implements OnInit {
   private findTopicById(id: number): Topic | undefined {
     return this.subscribedTopics.find(topic => topic.id === id);
   }
-
-
-
-
 }

@@ -10,12 +10,9 @@
   <!-- Post Detail -->
   <div *ngIf="!(isLoading$ | async) && !(error$ | async) && post" class="post-content">
 
-
-
     <!-- Post Header -->
     <app-post-header [title]="post.title" [creationDate]="post.creationDate" [authorName]="post.author"
       [topicName]="post.topic" />
-
 
     <!-- Post Content -->
     <p class="post-text">{{ post.content }}</p>

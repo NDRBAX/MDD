@@ -4,7 +4,7 @@ import {
   ActivatedRouteSnapshot,
   ResolveFn,
 } from '@angular/router';
-import { Observable, of, catchError, forkJoin, map } from 'rxjs';
+import { Observable, of, catchError, map } from 'rxjs';
 import { Topic } from 'src/app/features/topics/interfaces/topic.interface';
 import { TopicsService } from 'src/app/features/topics/services/topics.service';
 

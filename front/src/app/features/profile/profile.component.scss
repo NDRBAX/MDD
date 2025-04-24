@@ -1,6 +1,6 @@
 @import "src/styles/responsive.scss";
 
-.profile-container {
+.profile-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,6 @@
     align-self: flex-start;
     margin-bottom: 1rem;
   }
-
 
   form {
     width: 100%;
@@ -33,24 +32,30 @@
     }
   }
 
-  hr {
-    width: 100%;
-    margin: 1.5rem 0;
-    border: 1px solid #1f1e1e;
+
+}
+
+hr {
+  width: 100%;
+  margin: 1.5rem;
+  border: 1px solid #1f1e1e;
+}
+
+.subscriptions-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .topics-grid {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 4px;
+    grid-template-columns: 1fr;
   }
 
-  .user-subscriptions-container {
+  @include responsive-desktop {
     .topics-grid {
-      display: grid;
-      gap: 20px;
-      margin-bottom: 4px;
-      grid-template-columns: 1fr;
-    }
-
-    @include responsive-desktop {
-      .topics-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

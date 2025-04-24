@@ -5,7 +5,6 @@ import {
   ResolveFn,
 } from '@angular/router';
 import { Observable, of, catchError, forkJoin, map } from 'rxjs';
-import { User } from '@core/interfaces/user.interface';
 import { UserService } from '../services/user.service';
 
 import { UserProfileData } from '../interfaces/user-profile-data';

@@ -10,7 +10,7 @@
   <!-- TOPICS -->
   <div *ngIf="!(errors$ | async) && !(isLoading$ | async) && topics as topics" class="topics-grid">
     <ng-container *ngIf="topics.length; else noTopicsTemplate">
-      <app-topic-item *ngFor="let topic of topics" [topic]="topic" (action)="onAction($event)" />
+      <app-topic-card *ngFor="let topic of topics" [topic]="topic" mode="subscribe" (subscribe)="onAction($event)" />
     </ng-container>
 
     <!-- IF TOPICS EMPTY -->

@@ -1,44 +1,46 @@
-<div class="profile-container">
-  <h2 class="title">Profil utilisateur</h2>
-  <form [formGroup]="updateProfileForm">
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Username</mat-label>
-      <input matInput formControlName="username" />
-    </mat-form-field>
+<div class="container-content">
 
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" />
-    </mat-form-field>
+  <div class="profile-content">
+    <h2 class="title">Profil utilisateur</h2>
+    <form [formGroup]="updateProfileForm" class="profile-container">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
-        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
 
-    <app-button color="primary" label="Sauvegarder" [disabled$]="disableSubmitButton$" (onClick)="onSubmit()" />
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
 
-  </form>
+      <app-button color="primary" label="Sauvegarder" [disabled$]="disableSubmitButton$" (onClick)="onSubmit()" />
+    </form>
+  </div>
 
   <hr />
 
-  <h2 class="title">Abonnements</h2>
+  <div class="subscriptions-content">
+    <h2 class="title">Abonnements</h2>
 
-  <div class="user-subscriptions-container">
     <!-- LOADER -->
     <app-spinner [isLoading$]="isLoading$" message="Chargement de vos abonnements..." />
 
     <!-- ERRORS-->
-    <div *ngIf="errors$ | async as errorMessage" class="error-message">
+    <div *ngIf="errors$ | async as errorMessage">
       <app-status-message type="error" [message]="errorMessage" />
     </div>
 
     <!-- SUBSCRIBED TOPICS -->
-    <div *ngIf="!(errors$ | async) && !(isLoading$ | async)" class="topics-grid">
-      <ng-container *ngIf="subscribedTopics.length; else noSubscriptionsTemplate">
+    <div *ngIf="!(errors$ | async) && !(isLoading$ | async) && subscribedTopics as subscriptions" class="topics-grid">
+      <ng-container *ngIf="subscriptions.length; else noSubscriptionsTemplate">
         <app-topic-card *ngFor="let topic of subscribedTopics" [topic]="topic" mode="unsubscribe"
           (unsubscribe)="onUnsubscribe($event)" />
       </ng-container>
@@ -48,6 +50,6 @@
         <app-status-message type="empty" message="Aucun thème disponible pour le moment." />
       </ng-template>
     </div>
-  </div>
 
+  </div>
 </div>

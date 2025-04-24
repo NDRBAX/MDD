@@ -3,7 +3,6 @@ import { inject } from "@angular/core";
 import { ActivatedRouteSnapshot, ResolveFn, Router, RouterStateSnapshot } from "@angular/router";
 
 import { catchError, Observable, of } from "rxjs";
-import { Post } from "../../interfaces/post.interface";
 import { PostsService } from "../../services/posts.service";
 import { AlertService } from "@shared/services/alert.service";
 import { PostDetailData } from "../interfaces/post-detail.interface";

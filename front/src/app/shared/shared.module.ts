@@ -8,10 +8,10 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TruncateTextDirective } from './directives/truncateText.directive';
 import { IconTypePipe } from './pipes/icon-type.pipe';
 import { StatusColorPipe } from './pipes/status-color.pipe';
-import { AlertService } from './services/alert.service';
 import { LogoComponent } from './components/logo/logo.component';
 import { RouterModule } from '@angular/router';
 import { TopicCardComponent } from './components/topic-card/topic-card.component';
+import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { TopicCardComponent } from './components/topic-card/topic-card.component
     IconTypePipe,
     StatusColorPipe,
     LogoComponent,
-    TopicCardComponent
+    TopicCardComponent,
+    GoBackButtonComponent
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
@@ -36,7 +37,8 @@ import { TopicCardComponent } from './components/topic-card/topic-card.component
     IconTypePipe,
     StatusColorPipe,
     LogoComponent,
-    TopicCardComponent
+    TopicCardComponent,
+    GoBackButtonComponent
   ],
 })
 export class SharedModule {}
