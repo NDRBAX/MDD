@@ -1,0 +1,16 @@
+@import 'src/styles/responsive.scss';
+
+.post-list-container {
+  .posts-grid {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 4px;
+    grid-template-columns: 1fr;
+  }
+
+  @include responsive-desktop {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

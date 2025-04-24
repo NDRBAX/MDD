@@ -1,0 +1,11 @@
+<mat-card class="post-card" (click)="navigateToPostDetail()">
+  <app-post-header
+    [title]="post.title"
+    [creationDate]="post.creationDate"
+    [authorName]="post.author"
+  />
+
+  <mat-card-content>
+    <p [truncateText]="3">{{ post.content }}</p>
+  </mat-card-content>
+</mat-card>

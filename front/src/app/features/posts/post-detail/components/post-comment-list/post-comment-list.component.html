@@ -1,0 +1,47 @@
+<div class="comments-section container-content">
+  <h2 class="title">Commentaires ({{ comments.length }})</h2>
+
+  <!-- Comments List -->
+  <div class="comments-list">
+    <div *ngIf="comments.length === 0" class="no-comments">
+      <app-status-message type="info"
+        message="Aucun commentaire pour le moment. Soyez le premier à commenter !"></app-status-message>
+    </div>
+
+    <mat-card *ngFor="let comment of comments" class="comment-card">
+      <mat-card-header>
+        <mat-card-title>{{ comment.author }}</mat-card-title>
+        <mat-card-subtitle>{{ comment.creationDate | date: 'dd/MM/yyyy HH:mm' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ comment.content }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Add Comment Form -->
+  <mat-card class="comment-form-card">
+    <mat-card-content>
+      <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Ajouter un commentaire</mat-label>
+          <textarea matInput formControlName="comment" rows="3" placeholder="Partagez votre opinion..."></textarea>
+          <mat-error *ngIf="commentForm.get('comment')?.hasError('required')">
+            Un commentaire est requis
+          </mat-error>
+          <mat-error *ngIf="commentForm.get('comment')?.hasError('minlength')">
+            Le commentaire doit contenir au moins 5 caractères
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit"
+            [disabled]="commentForm.invalid || (isSubmitting$ | async)">
+            <span *ngIf="!(isSubmitting$ | async)">Commenter</span>
+            <mat-spinner diameter="20" *ngIf="isSubmitting$ | async"></mat-spinner>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

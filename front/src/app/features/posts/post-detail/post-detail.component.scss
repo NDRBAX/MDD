@@ -1,0 +1,23 @@
+@import "src/styles/responsive.scss";
+
+hr {
+  width: 100%;
+  margin: 3rem 0;
+  border: 1px solid #1f1e1e;
+}
+
+
+
+.post-text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 4rem;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: var(--black-color) !important;
+  margin-bottom: 10px !important;
+
+  @include responsive-mobile {
+    padding: 0
+  }
+}

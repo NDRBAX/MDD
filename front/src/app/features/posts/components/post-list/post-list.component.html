@@ -1,0 +1,21 @@
+<div class="post-list-container">
+  <!-- LOADER -->
+  <app-spinner [isLoading$]="isLoading$" message="Chargement des articles en cours..." />
+
+  <!-- ERRORS-->
+  <div *ngIf="errors$ | async as errorMessage" class="error-message">
+    <app-status-message type="error" [message]="errorMessage" />
+  </div>
+
+  <!-- POSTS -->
+  <div *ngIf="!(errors$ | async) && !(isLoading$ | async) && posts as posts" class="posts-grid">
+    <ng-container *ngIf="posts.length; else noTopicsTemplate">
+      <app-post-item *ngFor="let post of posts" [post]="post" />
+    </ng-container>
+
+    <!-- IF POSTS EMPTY -->
+    <ng-template #noTopicsTemplate>
+      <app-status-message type="empty" message="Aucun article disponible pour le moment." />
+    </ng-template>
+  </div>
+</div>

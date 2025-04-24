@@ -1,0 +1,77 @@
+<div class="post-create-container">
+
+  <div class="title-header">
+    <app-go-back-button navigateTo="/articles" class="back-button" />
+    <h1 class="title">Créer un nouvel article</h1>
+  </div>
+
+
+  <!-- Loader -->
+  <app-spinner [isLoading$]="isLoading$" message="Chargement des thèmes..."></app-spinner>
+
+  <!-- Error Message -->
+  <div *ngIf="error$ | async as errorMessage" class="error-message">
+    <app-status-message type="error" [message]="errorMessage"></app-status-message>
+  </div>
+
+  <!-- Form -->
+  <div *ngIf="!(isLoading$ | async) && !(error$ | async)" class="post-form-container">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <!-- Topic Selection -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Sélectionner un thème</mat-label>
+        <mat-select formControlName="topicId" required>
+          <mat-option *ngFor="let topic of topics" [value]="topic.id">
+            {{ topic.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="postForm.get('topicId')?.hasError('required')">
+          Veuillez sélectionner un thème
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Title Input -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Titre de l'article</mat-label>
+        <input matInput formControlName="title" placeholder="Titre de l'article" required>
+        <mat-error *ngIf="postForm.get('title')?.hasError('required')">
+          Le titre est requis
+        </mat-error>
+        <mat-error *ngIf="postForm.get('title')?.hasError('minlength')">
+          Le titre doit contenir au moins 5 caractères
+        </mat-error>
+        <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')">
+          Le titre ne doit pas dépasser 100 caractères
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Content Textarea -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contenu de l'article</mat-label>
+        <textarea matInput formControlName="content" placeholder="Contenu de l'article" rows="10" required></textarea>
+        <mat-error *ngIf="postForm.get('content')?.hasError('required')">
+          Le contenu est requis
+        </mat-error>
+        <mat-error *ngIf="postForm.get('content')?.hasError('minlength')">
+          Le contenu doit contenir au moins 20 caractères
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button mat-button type="button" color="warn" (click)="cancel()" [disabled]="isSubmitting$ | async">
+          Annuler
+        </button>
+        <button mat-raised-button type="submit" color="primary"
+          [disabled]="postForm.invalid || (isSubmitting$ | async)">
+          <ng-container *ngIf="!(isSubmitting$ | async); else submitting">
+            Créer
+          </ng-container>
+          <ng-template #submitting>
+            <mat-spinner diameter="20"></mat-spinner>
+          </ng-template>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
