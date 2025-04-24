@@ -6,6 +6,10 @@ export const environment = {
   production: false,
   apiTopics: 'api/topics',
   apiAuth: 'api/auth',
+  apiUsers: 'api/users',
+  apiSubscriptions: 'api/subscriptions',
+  apiComments: 'api/comments',
+  apiPosts: 'api/posts',
   jwtAccessExpirationMilliseconds: 900000, // 15 minutes
   jwtRefreshExpirationMilliseconds: 604800000, // 7 days
 };
