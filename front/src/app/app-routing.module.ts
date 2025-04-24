@@ -6,6 +6,18 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
+    path: 'articles',
+    loadChildren: () =>
+      import('./features/posts/posts.module').then((m) => m.PostsModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./features/profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
