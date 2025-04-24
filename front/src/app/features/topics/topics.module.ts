@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 
 import { SharedModule } from '@shared/shared.module';
-import { TopicItemComponent } from './components/topic-item/topic-item.component';
+
 import { TopicsRoutingModule } from './topics-routing.module';
 import { TopicsComponent } from './topics.component';
-
-
 
 @NgModule({
   imports: [
@@ -16,7 +14,6 @@ import { TopicsComponent } from './topics.component';
     SharedModule
   ],
   declarations: [
-    TopicItemComponent,
     TopicListComponent,
     TopicsComponent
   ]

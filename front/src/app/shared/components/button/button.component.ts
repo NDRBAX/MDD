@@ -14,6 +14,14 @@ export class ButtonComponent{
   @Input() disabled$!: Observable<boolean>;
   @Output() onClick = new EventEmitter<any>();
 
+
+  isDisabled(): boolean {
+    if (typeof this.disabled$ === 'boolean') {
+      return this.disabled$;
+    }
+    return false;
+  }
+
   getColorClass() {
     return {
       'primary-color': this.color === 'primary',

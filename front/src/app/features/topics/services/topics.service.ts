@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, delay, Observable, of } from 'rxjs';
-import { Topic } from '../models/topic.model';
+import { Topic } from '../interfaces/topic.interface';
 import { environment } from '@env/environment';
 
 @Injectable({

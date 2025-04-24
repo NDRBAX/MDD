@@ -11,6 +11,7 @@ import { TopicsModule } from './features/topics/topics.module';
 import { SharedModule } from '@shared/shared.module';
 import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 import { HomeModule } from './home/home.module';
+import { ProfileModule } from './features/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeModule } from './home/home.module';
     CoreModule,
     TopicsModule,
     HomeModule,
-    SharedModule
+    SharedModule,
+    ProfileModule
   ],
   providers: [
     provideAnimationsAsync(),

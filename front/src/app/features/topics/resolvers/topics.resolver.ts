@@ -1,18 +1,29 @@
 import { inject } from "@angular/core";
 import { TopicsService } from "../services/topics.service";
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
-import { Topic } from "../models/topic.model";
-import { catchError, Observable, of } from "rxjs";
+import { Topic } from "../interfaces/topic.interface";
+import { catchError, forkJoin, map, Observable, of } from "rxjs";
+import { SubscriptionService } from "@core/services/subscription.service";
+import { UserTopicsData } from "../interfaces/user-topics.interface";
 
-export const topicsResolver: ResolveFn<Topic[]> = (
+export const topicsResolver: ResolveFn<UserTopicsData | null> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
-): Observable<Topic[]> => {
+): Observable<UserTopicsData | null> => {
   const topicsService = inject(TopicsService);
-  return topicsService.getAllTopics().pipe(
+  const subscriptionService = inject(SubscriptionService)
+
+  return forkJoin({
+    topics: topicsService.getAllTopics(),
+    subscriptions: subscriptionService.getUserSubscriptions()
+  }).pipe(
+    map((result) => ({
+      topics: result.topics,
+      subscriptions: result.subscriptions
+    })),
     catchError(error => {
-      console.error('Error loading topics', error);
-      return of([]);
+      console.error('', error);
+      return of(null)
     })
   );
 };
