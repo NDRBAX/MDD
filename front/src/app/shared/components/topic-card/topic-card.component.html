@@ -1,0 +1,17 @@
+<mat-card class="topic-card">
+  <mat-card-header>
+    <mat-card-title>{{ topic.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p [truncateText]="3">{{ topic.description }}</p>
+  </mat-card-content>
+
+  <mat-card-actions class="topic-actions" *ngIf="showButton">
+    <app-button
+      [label]="buttonLabel"
+      [color]="buttonColor"
+      [type]="'flat'"
+      [disabled$]="isButtonDisabled"
+      (onClick)="onAction()" />
+  </mat-card-actions>
+</mat-card>

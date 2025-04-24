@@ -11,6 +11,7 @@ import { StatusColorPipe } from './pipes/status-color.pipe';
 import { AlertService } from './services/alert.service';
 import { LogoComponent } from './components/logo/logo.component';
 import { RouterModule } from '@angular/router';
+import { TopicCardComponent } from './components/topic-card/topic-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     TruncateTextDirective,
     IconTypePipe,
     StatusColorPipe,
-    LogoComponent
+    LogoComponent,
+    TopicCardComponent
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
@@ -33,7 +35,8 @@ import { RouterModule } from '@angular/router';
     TruncateTextDirective,
     IconTypePipe,
     StatusColorPipe,
-    LogoComponent
+    LogoComponent,
+    TopicCardComponent
   ],
 })
 export class SharedModule {}
