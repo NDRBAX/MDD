@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Topic } from '../../interfaces/topic.interface';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { AlertService } from '@shared/services/alert.service';
 import { Subscription } from '@core/interfaces/subscription.interface';
@@ -43,7 +43,7 @@ export class TopicListComponent implements OnInit {
               `Vous êtes abonné au thème ${topic.name}.`
             );
           },
-          error: (err) => {
+          error: () => {
             topic.isLoading = false;
             this.alertService.error(
               `Vous n'avez pas pu vous abonner au thème ${topic.name}. Veuillez réessayer plus tard.`
@@ -51,29 +51,6 @@ export class TopicListComponent implements OnInit {
           },
         });
     }
-
-    // of(null)
-    //   .pipe(delay(2000))
-    //   .subscribe({
-    //     next: () => {
-
-    //       topic.isSubscribed = !topic.isSubscribed;
-    //       topic.isLoading = false;
-    //       this.alertService.success(
-    //         `Vous êtes ${
-    //           topic.isSubscribed ? 'abonné' : 'désabonné'
-    //         } au thème ${topic.name}.`
-    //       );
-    //     },
-    //     error: (err) => {
-    //       topic.isLoading = false;
-    //       this.alertService.error(
-    //         `Vous n'avez pas pu vous ${
-    //           topic.isSubscribed ? 'abonner' : 'désabonner'
-    //         } au thème ${topic.name}. Veuillez réessayer plus tard.`
-    //       );
-    //     },
-    //   });
   }
 
   private findTopicById(id: number): Topic | undefined {

@@ -8,7 +8,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TruncateTextDirective } from './directives/truncateText.directive';
 import { IconTypePipe } from './pipes/icon-type.pipe';
 import { StatusColorPipe } from './pipes/status-color.pipe';
-import { AlertService } from './services/alert.service';
 import { LogoComponent } from './components/logo/logo.component';
 import { RouterModule } from '@angular/router';
 import { TopicCardComponent } from './components/topic-card/topic-card.component';

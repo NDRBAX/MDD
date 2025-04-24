@@ -4,8 +4,6 @@ import { NgModule } from "@angular/core";
 import { CreatePostComponent } from "./create-post.component";
 import { topicsResolver } from "./resolvers/topics.resolver";
 
-
-
 const routes: Routes = [
   {
     path: '',
@@ -15,7 +13,6 @@ const routes: Routes = [
     }
   }
 ]
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

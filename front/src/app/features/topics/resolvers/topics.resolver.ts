@@ -1,7 +1,6 @@
 import { inject } from "@angular/core";
 import { TopicsService } from "../services/topics.service";
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
-import { Topic } from "../interfaces/topic.interface";
 import { catchError, forkJoin, map, Observable, of } from "rxjs";
 import { SubscriptionService } from "@core/services/subscription.service";
 import { UserTopicsData } from "../interfaces/user-topics.interface";

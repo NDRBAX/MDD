@@ -1,10 +1,5 @@
 @import 'src/styles/responsive.scss';
 
-@include responsive(xs) {
-  .app-container {
-    // padding: 0 16px;
-  }
-}
 @include responsive(xl) {
   .app-container {
     padding: 0;
