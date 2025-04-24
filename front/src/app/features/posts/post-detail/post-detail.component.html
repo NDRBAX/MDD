@@ -1,0 +1,27 @@
+<div class="container-content">
+  <!-- Loader -->
+  <app-spinner [isLoading$]="isLoading$" message="Chargement de l'article..."></app-spinner>
+
+  <!-- Error Message -->
+  <div *ngIf="error$ | async as errorMessage" class="error-message">
+    <app-status-message type="error" [message]="errorMessage"></app-status-message>
+  </div>
+
+  <!-- Post Detail -->
+  <div *ngIf="!(isLoading$ | async) && !(error$ | async) && post" class="post-content">
+
+
+
+    <!-- Post Header -->
+    <app-post-header [title]="post.title" [creationDate]="post.creationDate" [authorName]="post.author"
+      [topicName]="post.topic" />
+
+
+    <!-- Post Content -->
+    <p class="post-text">{{ post.content }}</p>
+    <hr />
+
+    <!-- Post Comments -->
+    <app-post-comment-list [postId]="post.id" [comments]="post.comments" (commentAdded)="onCommentAdded($event)" />
+  </div>
+</div>
